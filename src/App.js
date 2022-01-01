@@ -71,8 +71,8 @@ function App() {
           allTodos.map((todo) => (
             <li key={todo.id} className='flex gap-4 border-2 border-slate-600 p-4'> 
             <span className='bg-gray-300 text-black p-4'> {todo.input} </span>
-            <button onClick={()=> handleEdit(todo.id)} className='bg-gray-600 p-2 text-white'> Edit</button>  
-            <button onClick={()=> handleDelete(todo.id)} className='bg-gray-600 p-2 text-white'> Delete</button>  
+            <button onClick={()=> handleEdit(todo.id)} className='bg-gray-600 p-2 w-16 text-white'> Edit</button>  
+            <button onClick={()=> handleDelete(todo.id)} className='bg-gray-600 p-2 w-16 text-white'> Delete</button>  
              </li>
           ))
         }
