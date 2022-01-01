@@ -1,17 +1,29 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
 
 function App() {
   const [input, setInput] = useState("");
-  const [allTodos, setAllTodos] = useState([]);
+  const [allTodos, setAllTodos] = useState(() => {
+    const savedTodos = localStorage.getItem("todos");
+
+    if(savedTodos) {
+      return JSON.parse(savedTodos);
+    } else {
+      return []
+    }
+  });
   const [editId, setEditId] = useState(0);
   const inputRef = useRef(null);
+
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(allTodos))
+  }, [allTodos])
 
   const handleSubmit = (e) => {
       e.preventDefault();
 
       //edit todo item
-
       if(editId) {
        const editedTodo =  allTodos.find((item) => item.id === editId); 
         /* console.log(editedTodo); */
